@@ -441,8 +441,6 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">3.3.1. Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-fasrc-cluster-login-node">3.3.2. Connecting to the FASRC cluster (login node)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-fasrc-cluster-compute-node">3.3.3. Connecting to the FASRC cluster (Compute node)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-jupyter-notebooks-within-vscode">3.3.4. Using Jupyter notebooks within VSCode</a></li>
 </ul>
             </nav>
         </div>
@@ -477,117 +475,160 @@
 </ul>
 <p>For mac and linux users, the file is located at <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>. For Windows users, the file is located at <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;username&gt;\.ssh\config</span></code>. Add the following entry to the <code class="docutils literal notranslate"><span class="pre">config</span></code> file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host<span class="w"> </span>cannon
-<span class="w">  </span>HostName<span class="w"> </span>holylogin01.rc.fas.harvard.edu
+<span class="w">  </span>HostName<span class="w"> </span>login.rc.fas.harvard.edu
 <span class="w">  </span>User<span class="w"> </span>&lt;username&gt;
 </pre></div>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Please rotate among different login nodes to avoid an unbalanced load on specific nodes. Create multiple connections and change the login node name (e.g., from <code class="docutils literal notranslate"><span class="pre">holylogin01</span></code> to <code class="docutils literal notranslate"><span class="pre">holylogin02</span></code>, <code class="docutils literal notranslate"><span class="pre">holylogin03</span></code>, or <code class="docutils literal notranslate"><span class="pre">holylogin04</span></code>) and connect to a different login node every time. For example, define <code class="docutils literal notranslate"><span class="pre">cannon02</span></code> connection as,</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host<span class="w"> </span>cannon02
-<span class="w">  </span>HostName<span class="w"> </span>holylogin02.rc.fas.harvard.edu
+<span class="w">  </span>HostName<span class="w"> </span>login.rc.fas.harvard.edu
 <span class="w">  </span>User<span class="w"> </span>&lt;username&gt;
 </pre></div>
 </div>
-</div>
-<p>Please make sure that you use your FASRC username in place of <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code>.</p>
-<ul class="simple">
-<li><p>Step 2: Open the VSCode and click on the Remote Explorer icon on the left-hand (or the right-hand) side of the window.</p></li>
-</ul>
-<figure class="align-default" id="vscode-ssh-login-1">
-<a class="reference internal image-reference" href="../_images/vscode_ssh_login_1.png"><img alt="../_images/vscode_ssh_login_1.png" src="../_images/vscode_ssh_login_1.png" style="height: 500px;" /></a>
-</figure>
-<ul class="simple">
-<li><p>Step 3: Hover the mouse on your username or on <code class="docutils literal notranslate"><span class="pre">cannon</span></code> and click on the <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> button to connect to the FASRC cluster.</p></li>
-</ul>
-<figure class="align-default" id="vscode-ssh-login-2">
-<a class="reference internal image-reference" href="../_images/vscode_ssh_login_2.png"><img alt="../_images/vscode_ssh_login_2.png" src="../_images/vscode_ssh_login_2.png" style="height: 500px;" /></a>
-</figure>
-<ul class="simple">
-<li><p>Step 4: Enter your FASRC password (and MFA code) when prompted.</p></li>
-</ul>
-<figure class="align-default" id="vscode-ssh-login-3">
-<a class="reference internal image-reference" href="../_images/vscode_ssh_login_3.png"><img alt="../_images/vscode_ssh_login_3.png" src="../_images/vscode_ssh_login_3.png" style="height: 500px;" /></a>
-</figure>
-<p>Once connected, you will see the file explorer on the left-hand side of the window. You can now open any folder or file on the FASRC cluster and take full advantage of VSCode’s feature set.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Please do not run any computationally intensive tasks on the login node. Use the login node only for editing files and submitting jobs to the compute nodes.</p>
-</div>
-<p>You can use the terminal in VSCode to run SLURM commands and submit jobs to the compute nodes. Open the terminal by clicking on <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Terminal</span></code> in the top menu.</p>
-<figure class="align-default" id="vscode-ssh-login-4">
-<a class="reference internal image-reference" href="../_images/vscode_ssh_login_4.png"><img alt="../_images/vscode_ssh_login_4.png" src="../_images/vscode_ssh_login_4.png" style="height: 500px;" /></a>
-</figure>
-</section>
-<section id="connecting-to-the-fasrc-cluster-compute-node">
-<span id="development-and-runtime-envs-using-vscode-for-remote-development-compute-node"></span><h2><span class="section-number">3.3.3. </span>Connecting to the FASRC cluster (Compute node)<a class="headerlink" href="#connecting-to-the-fasrc-cluster-compute-node" title="Link to this heading">#</a></h2>
-<p>Connecting to the compute nodes requries two additional configurations:</p>
-<ol class="arabic simple">
-<li><p>Add the compute node configuration to the ssh configuration file on your local machine.</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host<span class="w"> </span>cannon
-<span class="w">  </span>HostName<span class="w"> </span>holylogin01.rc.fas.harvard.edu
-<span class="w">  </span>User<span class="w"> </span>&lt;username&gt;
-<span class="w">  </span>ControlMaster<span class="w"> </span>auto
-<span class="w">  </span>ControlPath<span class="w"> </span>~/.ssh/%r@%h:%p
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+Please make sure that you use your FASRC username in place of `&lt;username&gt;`.
 
-Host<span class="w"> </span>holy*
-<span class="w">    </span>HostName<span class="w"> </span>%h
-<span class="w">    </span>User<span class="w"> </span>&lt;username&gt;
-<span class="w">    </span>ProxyJump<span class="w"> </span>cannon
+- Step 2: Open the VSCode and click on the Remote Explorer icon on the left-hand (or the right-hand) side of the window.
+
+```{figure} figures/png/vscode_ssh_login_1.png
+---
+height: 500 px
+name: VSCode SSH Login 1
+```
+
+- Step 3: Hover the mouse on your username or on `cannon` and click on the `-&gt;` button to connect to the FASRC cluster.
+
+```{figure} figures/png/vscode_ssh_login_2.png
+---
+height: 500 px
+name: VSCode SSH Login 2
+```
+
+- Step 4: Enter your FASRC password (and MFA code) when prompted.
+
+```{figure} figures/png/vscode_ssh_login_3.png
+---
+height: 500 px
+name: VSCode SSH Login 3
+```
+
+Once connected, you will see the file explorer on the left-hand side of the window. You can now open any folder or file on the FASRC cluster and take full advantage of VSCode&#39;s feature set. 
+
+```{note}
+Please do not run any computationally intensive tasks on the login node. Use the login node only for editing files and submitting jobs to the compute nodes.
+```
+
+You can use the terminal in VSCode to run SLURM commands and submit jobs to the compute nodes. Open the terminal by clicking on `Terminal` -&gt; `New Terminal` in the top menu. 
+
+```{figure} figures/png/vscode_ssh_login_4.png
+---
+height: 500 px
+name: VSCode SSH Login 4
+```
+
+(development_and_runtime_envs:using_vscode_for_remote_development:compute_node)=
+## Connecting to the FASRC cluster (Compute node)
+
+Connecting to the compute nodes requries two additional configurations:
+
+1. Add the compute node configuration to the ssh configuration file on your local machine.
+
+```bash
+Host cannon
+  HostName login.rc.fas.harvard.edu
+  User &lt;username&gt;
+  ControlMaster auto
+  ControlPath ~/.ssh/%r@%h:%p
+
+Host holy*
+    HostName %h
+    User &lt;username&gt;
+    ProxyJump cannon
+```
+
+
+2. Generate a public and private key on your local machine and submit the public key to the FASRC cluster.
+
+Go to the `~/.ssh` directory on your local machine and see if you have a file named `id_rsa.pub`. If you don&#39;t have the file, you need to generate the keys using the following command:
+
+```bash
+ssh-keygen
+```
+
+Once you have the `id_rsa.pub` file, submit the public key to the FASRC cluster using the following command:
+
+```bash
+ssh-copy-id -i ~/.ssh/id_rsa.pub &lt;username&gt;@login.rc.fas.harvard.edu
+```
+It will prompt you to enter your FASRC password. Once you enter the password, the public key will be added to the `~/.ssh/authorized_keys` file on the FASRC cluster.
+
+After completing the above steps, you can connect to the compute nodes. First connect to the login node and allocate an interactive session. For example:
+
+```bash
+salloc --partition=kempner_requeue --account=kempner_dev --ntasks=1 --cpus-per-task=16 --mem=16G --gres=gpu:1 --time=00-03:00:00
+```
+This will allocate an interactive session on the `kempner_requeue` partition with 16 cores, 16GB of memory, and 1 GPU for 3 hours. Then node name is displayed int the terminal. 
+
+```{tip}
+You can also use the `squeue -u &lt;username&gt;` command to see the list of your running jobs and the nodes they are running on.
+```
+
+```{figure} figures/png/vscode_ssh_login_5.png
+---
+height: 500 px
+name: VSCode SSH Login 5
+```
+
+Once you have the node name, go to the search bar of the VScode and type `&gt;Remote-SSH: Connect to Host...` and then in the prompt, put `&lt;username&gt;@&lt;node_name&gt;` and press enter. 
+
+```{figure} figures/png/vscode_ssh_login_6.png
+---
+height: 500 px
+name: VSCode SSH Login 6
+```
+This will open a new window on the compute node. You can now use it to run your jobs interactively. 
+
+```{figure} figures/png/vscode_ssh_login_7.png
+---
+height: 500 px
+name: VSCode SSH Login 7
+```
+
+(development_and_runtime_envs:using_vscode_for_remote_development:jupyter)=
+## Using Jupyter notebooks within VSCode
+
+
+You can open, edit, and run Jupyter notebooks within VSCode. To do so, you need to first install the [Jupyter extension](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter).
+
+
+The interface for notebooks within VSCode is similar to other methods of accessing them - there are tools for running individual cells, all cells, clearing all outputs, etc. See the [VSCode jupyter notebook documention](https://code.visualstudio.com/docs/datascience/jupyter-notebooks) for a detailed overview of these options.
+
+
+If you follow the instructions above, you will be able to open and run jupyter notebooks within an interactive session on the cluster. Open the notebook within VSCode and click on `Select Kernel` (in the top right corner):
+
+
+```{figure} figures/png/vscode_jupyter_notebook_1.png
+---
+height: 300 px
+name: VSCode Jupyter Notebook 1
+```
+
+
+If you click `Select Another Kernel` and then `Python environments`, you should see a list of possible kernels, including any [user-defined conda environments](development_and_runtime_envs:using_conda_env:creation) (if you installed ipykernel within them):
+
+
+```{figure} figures/png/vscode_jupyter_notebook_2.png
+---
+height: 300 px
+name: VSCode Jupyter Notebook 2
+```
+
+
+You can click on your preferred environment to use it within the jupyter notebook.
+
+
+If you recently created the conda environment, you may need to reload before it shows up. To do this, open the command palette using `Ctrl + Shift + P` (Windows)/`Shift + Command + P` (Mac) and type and select `Reload Window`.
 </pre></div>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Please rotate among different login nodes to avoid an unbalanced load on specific nodes. Create multiple connections and change the login node name (e.g., from <code class="docutils literal notranslate"><span class="pre">holylogin01</span></code> to <code class="docutils literal notranslate"><span class="pre">holylogin02</span></code>, <code class="docutils literal notranslate"><span class="pre">holylogin03</span></code>, or <code class="docutils literal notranslate"><span class="pre">holylogin04</span></code>) and connect to a different login node every time.</p>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>Generate a public and private key on your local machine and submit the public key to the FASRC cluster.</p></li>
-</ol>
-<p>Go to the <code class="docutils literal notranslate"><span class="pre">~/.ssh</span></code> directory on your local machine and see if you have a file named <code class="docutils literal notranslate"><span class="pre">id_rsa.pub</span></code>. If you don’t have the file, you need to generate the keys using the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen
-</pre></div>
-</div>
-<p>Once you have the <code class="docutils literal notranslate"><span class="pre">id_rsa.pub</span></code> file, submit the public key to the FASRC cluster using the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-copy-id<span class="w"> </span>-i<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span>&lt;username&gt;@login.rc.fas.harvard.edu
-</pre></div>
-</div>
-<p>It will prompt you to enter your FASRC password. Once you enter the password, the public key will be added to the <code class="docutils literal notranslate"><span class="pre">~/.ssh/authorized_keys</span></code> file on the FASRC cluster.</p>
-<p>After completing the above steps, you can connect to the compute nodes. First connect to the login node and allocate an interactive session. For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>salloc<span class="w"> </span>--partition<span class="o">=</span>kempner_requeue<span class="w"> </span>--account<span class="o">=</span>kempner_dev<span class="w"> </span>--ntasks<span class="o">=</span><span class="m">1</span><span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">16</span><span class="w"> </span>--mem<span class="o">=</span>16G<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>--time<span class="o">=</span><span class="m">00</span>-03:00:00
-</pre></div>
-</div>
-<p>This will allocate an interactive session on the <code class="docutils literal notranslate"><span class="pre">kempner_requeue</span></code> partition with 16 cores, 16GB of memory, and 1 GPU for 3 hours. Then node name is displayed int the terminal.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can also use the <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">&lt;username&gt;</span></code> command to see the list of your running jobs and the nodes they are running on.</p>
-</div>
-<figure class="align-default" id="vscode-ssh-login-5">
-<a class="reference internal image-reference" href="../_images/vscode_ssh_login_5.png"><img alt="../_images/vscode_ssh_login_5.png" src="../_images/vscode_ssh_login_5.png" style="height: 500px;" /></a>
-</figure>
-<p>Once you have the node name, go to the search bar of the VScode and type <code class="docutils literal notranslate"><span class="pre">&gt;Remote-SSH:</span> <span class="pre">Connect</span> <span class="pre">to</span> <span class="pre">Host...</span></code> and then in the prompt, put <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;node_name&gt;</span></code> and press enter.</p>
-<figure class="align-default" id="vscode-ssh-login-6">
-<a class="reference internal image-reference" href="../_images/vscode_ssh_login_6.png"><img alt="../_images/vscode_ssh_login_6.png" src="../_images/vscode_ssh_login_6.png" style="height: 500px;" /></a>
-</figure>
-<p>This will open a new window on the compute node. You can now use it to run your jobs interactively.</p>
-<figure class="align-default" id="vscode-ssh-login-7">
-<a class="reference internal image-reference" href="../_images/vscode_ssh_login_7.png"><img alt="../_images/vscode_ssh_login_7.png" src="../_images/vscode_ssh_login_7.png" style="height: 500px;" /></a>
-</figure>
-</section>
-<section id="using-jupyter-notebooks-within-vscode">
-<span id="development-and-runtime-envs-using-vscode-for-remote-development-jupyter"></span><h2><span class="section-number">3.3.4. </span>Using Jupyter notebooks within VSCode<a class="headerlink" href="#using-jupyter-notebooks-within-vscode" title="Link to this heading">#</a></h2>
-<p>You can open, edit, and run Jupyter notebooks within VSCode. To do so, you need to first install the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter">Jupyter extension</a>.</p>
-<p>The interface for notebooks within VSCode is similar to other methods of accessing them - there are tools for running individual cells, all cells, clearing all outputs, etc. See the <a class="reference external" href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">VSCode jupyter notebook documention</a> for a detailed overview of these options.</p>
-<p>If you follow the instructions above, you will be able to open and run jupyter notebooks within an interactive session on the cluster. Open the notebook within VSCode and click on <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Kernel</span></code> (in the top right corner):</p>
-<figure class="align-default" id="vscode-jupyter-notebook-1">
-<a class="reference internal image-reference" href="../_images/vscode_jupyter_notebook_1.png"><img alt="../_images/vscode_jupyter_notebook_1.png" src="../_images/vscode_jupyter_notebook_1.png" style="height: 300px;" /></a>
-</figure>
-<p>If you click <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Another</span> <span class="pre">Kernel</span></code> and then <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">environments</span></code>, you should see a list of possible kernels, including any <a class="reference internal" href="using_conda_env.html#development-and-runtime-envs-using-conda-env-creation"><span class="std std-ref">user-defined conda environments</span></a> (if you installed ipykernel within them):</p>
-<figure class="align-default" id="vscode-jupyter-notebook-2">
-<a class="reference internal image-reference" href="../_images/vscode_jupyter_notebook_2.png"><img alt="../_images/vscode_jupyter_notebook_2.png" src="../_images/vscode_jupyter_notebook_2.png" style="height: 300px;" /></a>
-</figure>
-<p>You can click on your preferred environment to use it within the jupyter notebook.</p>
-<p>If you recently created the conda environment, you may need to reload before it shows up. To do this, open the command palette using <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">P</span></code> (Windows)/<code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Command</span> <span class="pre">+</span> <span class="pre">P</span></code> (Mac) and type and select <code class="docutils literal notranslate"><span class="pre">Reload</span> <span class="pre">Window</span></code>.</p>
 </section>
 </section>
 
@@ -658,8 +699,6 @@ Host<span class="w"> </span>holy*
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">3.3.1. Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-fasrc-cluster-login-node">3.3.2. Connecting to the FASRC cluster (login node)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-fasrc-cluster-compute-node">3.3.3. Connecting to the FASRC cluster (Compute node)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-jupyter-notebooks-within-vscode">3.3.4. Using Jupyter notebooks within VSCode</a></li>
 </ul>
   </nav></div>
 
