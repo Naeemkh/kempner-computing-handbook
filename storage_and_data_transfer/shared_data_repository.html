@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5.3. Shared Data/Model Repository &#8212; Kempner Institute Computing Handbook</title>
+    <title>5.4. Shared Data/Model Repository &#8212; Kempner Institute Computing Handbook</title>
   
   
   
@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -78,7 +78,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6. Performance Monitoring" href="../performance_monitoring/README.html" />
-    <link rel="prev" title="5.2. Data Transfer" href="data_transfer.html" />
+    <link rel="prev" title="5.3. The Kempner Testbed and tatm" href="testbed_and_tatm.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -220,7 +220,8 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">5. Storage and Data Transfer</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="understanding_storage_options.html">5.1. Understanding Storage Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_transfer.html">5.2. Data Transfer</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.3. Shared Data Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testbed_and_tatm.html">5.3. The Kempner Testbed and TATM</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.4. Shared Data Repository</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../performance_monitoring/README.html">6. Performance Monitoring</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -444,8 +445,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-current-list-of-ml-models">5.3.1. The current list of ML models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-current-list-of-ml-datasets">5.3.2. The current list of ML datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-current-list-of-ml-models">5.4.1. The current list of ML models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-current-list-of-ml-datasets">5.4.2. The current list of ML datasets</a></li>
 </ul>
             </nav>
         </div>
@@ -458,7 +459,7 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="shared-data-model-repository">
-<h1><span class="section-number">5.3. </span>Shared Data/Model Repository<a class="headerlink" href="#shared-data-model-repository" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">5.4. </span>Shared Data/Model Repository<a class="headerlink" href="#shared-data-model-repository" title="Link to this heading">#</a></h1>
 <p>We host several popular ML datasets and models on the Kempner HPC cluster. This approach reduces the need for multiple transfers of the same data/model by researchers and provides a central, read-only repository for all Kempner Institute users to access for their ML workflows. Only the admin team has write access, but users can submit requests for popular data/models. After a careful review, we may place a copy in the shared data/model repository. The current path on the cluster is:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">DATA_PATH</span><span class="o">=</span>/n/holylfs06/LABS/kempner_shared/Lab/data
 <span class="nv">MODEL_PATH</span><span class="o">=</span>/n/holylfs06/LABS/kempner_shared/Lab/model
@@ -469,7 +470,7 @@
 <p>We will develop a web interface later for data and model discovery.</p>
 </div>
 <section id="the-current-list-of-ml-models">
-<h2><span class="section-number">5.3.1. </span>The current list of ML models<a class="headerlink" href="#the-current-list-of-ml-models" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.4.1. </span>The current list of ML models<a class="headerlink" href="#the-current-list-of-ml-models" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>CodeLlama</strong></p>
 <ul>
@@ -524,7 +525,7 @@
 </ul>
 </section>
 <section id="the-current-list-of-ml-datasets">
-<h2><span class="section-number">5.3.2. </span>The current list of ML datasets<a class="headerlink" href="#the-current-list-of-ml-datasets" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.4.2. </span>The current list of ML datasets<a class="headerlink" href="#the-current-list-of-ml-datasets" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>c4_original</strong></p>
 <ul>
@@ -611,12 +612,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="data_transfer.html"
+       href="testbed_and_tatm.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5.2. </span>Data Transfer</p>
+        <p class="prev-next-title"><span class="section-number">5.3. </span>The Kempner Testbed and <code class="docutils literal notranslate"><span class="pre">tatm</span></code></p>
       </div>
     </a>
     <a class="right-next"
@@ -645,8 +646,8 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-current-list-of-ml-models">5.3.1. The current list of ML models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-current-list-of-ml-datasets">5.3.2. The current list of ML datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-current-list-of-ml-models">5.4.1. The current list of ML models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-current-list-of-ml-datasets">5.4.2. The current list of ML datasets</a></li>
 </ul>
   </nav></div>
 

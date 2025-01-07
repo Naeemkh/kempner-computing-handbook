@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -220,7 +220,8 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../storage_and_data_transfer/README.html">5. Storage and Data Transfer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../storage_and_data_transfer/understanding_storage_options.html">5.1. Understanding Storage Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../storage_and_data_transfer/data_transfer.html">5.2. Data Transfer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../storage_and_data_transfer/shared_data_repository.html">5.3. Shared Data Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../storage_and_data_transfer/testbed_and_tatm.html">5.3. The Kempner Testbed and TATM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../storage_and_data_transfer/shared_data_repository.html">5.4. Shared Data Repository</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../performance_monitoring/README.html">6. Performance Monitoring</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -504,11 +505,11 @@
 </pre></div>
 </div>
 <p><em><code class="docutils literal notranslate"><span class="pre">hyperparameter_tuning.py</span></code></em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
-<span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
-<span class="k">def</span> <span class="nf">read_hyperparameters</span><span class="p">(</span><span class="n">task_id</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_hyperparameters</span><span class="p">(</span><span class="n">task_id</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Reads the hyperparameters from a CSV file for the given task ID.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -520,7 +521,7 @@
     <span class="k">return</span> <span class="kc">None</span>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="c1"># Parse command-line arguments</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Process some integers.&#39;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--task_id&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
