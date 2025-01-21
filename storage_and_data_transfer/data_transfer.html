@@ -491,7 +491,7 @@
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Example 2: Copying a directory of files from Kempner cluster to laptop</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Jane Smith wants to transfer an entire directory, called <code class="docutils literal notranslate"><span class="pre">results</span></code>, from scratch storage on the cluster to her laptop’s Documents folder. She can accomplish this with running the following command on her laptop.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span>janesmith@login.rc.fas.harvard.edu:/n/holyscratch01/janesmith_lab/Users/janesmith/results<span class="w"> </span>/Users/janesmith/Documents/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span>janesmith@login.rc.fas.harvard.edu:/n/netscratch/janesmith_lab/Users/janesmith/results<span class="w"> </span>/Users/janesmith/Documents/
 </pre></div>
 </div>
 </div>
@@ -554,12 +554,12 @@
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Example 2: Copying a directory of files from Kempner cluster to laptop</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Jane Smith wants to transfer an entire directory, called <code class="docutils literal notranslate"><span class="pre">results</span></code>, from scratch storage on the cluster to her laptop’s Documents folder. She can accomplish this with running the following command on her laptop. She will use the archive mode argument (-a) and the verbose mode argument (-v):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-av<span class="w"> </span>janesmith@login.rc.fas.harvard.edu:/n/holyscratch01/janesmith_lab/Users/janesmith/results<span class="w"> </span>/Users/janesmith/Documents/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-av<span class="w"> </span>janesmith@login.rc.fas.harvard.edu:/n/netscratch/janesmith_lab/Users/janesmith/results<span class="w"> </span>/Users/janesmith/Documents/
 </pre></div>
 </div>
 <p class="sd-card-text">This creates a directory called results in the Documents folder, with all the files inside that were in the results directory on the cluster.</p>
 <p class="sd-card-text">Let’s say that Jane includes a trailing ‘/’ on the first file path:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-av<span class="w"> </span>janesmith@login.rc.fas.harvard.edu:/n/holyscratch01/janesmith_lab/Users/janesmith/results/<span class="w"> </span>/Users/janesmith/Documents/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-av<span class="w"> </span>janesmith@login.rc.fas.harvard.edu:/n/netscratch/janesmith_lab/Users/janesmith/results/<span class="w"> </span>/Users/janesmith/Documents/
 </pre></div>
 </div>
 <p class="sd-card-text">This behaves differently. Now, the files that were in the results directory on the cluster have been transferred directly to the Documents directory. There is not a ‘results’ directory on the local machine.</p>
@@ -640,7 +640,7 @@ You can customize the <code class="docutils literal notranslate"><span class="pr
 <h3><span class="section-number">5.2.4.2. </span>Data Transfer Example<a class="headerlink" href="#data-transfer-example" title="Link to this heading">#</a></h3>
 <p>In this example, we will transfer an entire directory called results on the cluster to the Documents folder on Ella Batty’s local machine.</p>
 <ol class="arabic simple">
-<li><p>First, set up the collection you are transferring data from and navigate to the correct directory. In this case, the collection is Harvard FAS RC Holyoke and the path to the results directory is <code class="docutils literal notranslate"><span class="pre">/n/holyscratch01/sham_lab/Users/ebatty</span></code>.</p></li>
+<li><p>First, set up the collection you are transferring data from and navigate to the correct directory. In this case, the collection is Harvard FAS RC Holyoke and the path to the results directory is <code class="docutils literal notranslate"><span class="pre">/n/netscratch/sham_lab/Users/ebatty</span></code>.</p></li>
 </ol>
 <figure class="align-default" id="globus-data-transfer-1">
 <a class="reference internal image-reference" href="../_images/globus_data_transfer_1.png"><img alt="../_images/globus_data_transfer_1.png" src="../_images/globus_data_transfer_1.png" style="height: 500px;" /></a>
