@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4.2. Data Transfer &#8212; Kempner Institute Computing Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=54655037" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-QFZEXWFW26"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-QFZEXWFW26');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-QFZEXWFW26');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 's1_high_performance_computing/storage_and_data_transfer/data_transfer';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.3. Shared Data/Model Repository" href="shared_data_repository.html" />
+    <link rel="prev" title="4.1. Storage Options" href="understanding_storage_options.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Kempner-logo_Full-Color-Full-Name-Harvard.svg" class="logo__image only-light" alt="Kempner Institute Computing Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/Kempner-logo_Full-Color-Full-Name-Harvard.svg" class="logo__image only-dark" alt="Kempner Institute Computing Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Kempner Computing Handbook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Performance Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../kempner_cluster/README.html">1. Kempner AI Cluster</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../kempner_cluster/introduction_and_cluster_basics.html">1.1. Introduction and Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kempner_cluster/overview_of_kempner_cluster.html">1.2. Overview of Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kempner_cluster/kempner_policies_for_responsible_use.html">1.3. Cluster Usage Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kempner_cluster/accessing_and_navigating_the_cluster.html">1.4. Accessing the Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kempner_cluster/accessing_gpu_by_fasrc_users.html">1.5. Access by FASRC Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../efficient_use_of_resources/fair_use_and_prioritization_policies.html">1.6. Fairshare Policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../general_hpc_concepts/README.html">2. Job Submission</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general_hpc_concepts/understanding_slurm.html">2.1. Understanding SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general_hpc_concepts/job_submission_basics.html">2.2. Job Submission Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general_hpc_concepts/array_jobs.html">2.3. Array Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general_hpc_concepts/job_dependencies.html">2.4. Job Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general_hpc_concepts/advanced_slurm_features.html">2.5. Advanced SLURM Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general_hpc_concepts/open_ondemand.html">2.6. Open OnDemand</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../development_and_runtime_envs/README.html">3. Development Environment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development_and_runtime_envs/software_module_and_environment_management.html">3.1. Software Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development_and_runtime_envs/containerization.html">3.2. Containerization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development_and_runtime_envs/using_vscode_for_remote_development.html">3.3. VSCode for Remote Dev</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development_and_runtime_envs/using_conda_env.html">3.4. Conda Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development_and_runtime_envs/handling_dependencies_with_spack.html">3.5. Spack Package Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development_and_runtime_envs/customizing_bashrc.html">3.6. Shell Configuration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">4. Storage and Data Transfer</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="understanding_storage_options.html">4.1. Storage Options</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.2. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shared_data_repository.html">4.3. Shared Data/Model Repository</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Engineering for Research</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../s2_swe_for_research/collaborative_code_development.html">5. Collaborative Code Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../s2_swe_for_research/software_design_principles.html">6. Software Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../s2_swe_for_research/documentation_and_readibility.html">7. Documentation and Readability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../s2_swe_for_research/testing_and_continuous_integration.html">8. Testing and Continues Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../s2_swe_for_research/package_development.html">9. Package Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../s2_swe_for_research/reproducible_research.html">10. Reproducible Research</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AI Tools and Workflows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../s3_ai_workflows/testbed_and_tatm.html">11. Data Discovery and Tokenization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuro AI Workflows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../s4_neuro_ai_workflows/README.html">12. Spike Sorting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AI Scaling and Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/scalability/README.html">13. Scalability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/scalability/introduction_to_parallel_computing.html">13.1. Intro to Parallel Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/scalability/gpu_computing.html">13.2. GPU Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/scalability/gpu_profiling.html">13.3. GPU Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/scalability/distributed_gpu_computing.html">13.4. Distributed GPU Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/scalability/parallel_io.html">13.5. Parallel I/O</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/efficiency/README.html">14. Efficiency</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/efficiency/ml_scaling_and_efficiency.html">14.1. ML Efficiency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/efficiency/performance_monitoring_and_optimization.html">14.2. Peformance Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/efficiency/efficient_deployment_and_inference.html">14.3. Deployment and Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/efficiency/experiment_management_and_reproducibility.html">14.4. Experiment Management</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Security and Compliance</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../s6_security_and_compliance/README.html">15. Security and Compliance</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Open Source Hub</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../s7_open_source_hub/README.html">16. Open Source Hub</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../s8_support/README.html">17. Support and Troubleshooting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../s8_support/faq.html">17.1. FAQ</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshops and Trainings</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../s9_workshops_and_trainings/README.html">Sessions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../s9_workshops_and_trainings/spring2403_intro_to_hpc/content_file.html">Spring 24, March</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/KempnerInstitute/kempner-computing-handbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/KempnerInstitute/kempner-computing-handbook/issues/new?title=Issue%20on%20page%20%2Fs1_high_performance_computing/storage_and_data_transfer/data_transfer.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/s1_high_performance_computing/storage_and_data_transfer/data_transfer.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Transfer</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scp">4.2.1. scp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rsync">4.2.2. rsync</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fpsync">4.2.3. fpsync</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#globus">4.2.4. Globus</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">4.2.4.1. Set-up</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer-example">4.2.4.2. Data Transfer Example</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-transfer">
+<span id="storage-and-data-trnasfer-data-transfer"></span><h1><span class="section-number">4.2. </span>Data Transfer<a class="headerlink" href="#data-transfer" title="Link to this heading">#</a></h1>
+<p>There are many possible methods for transferring data between local environments (such as your laptop) and the Kempner cluster. We focus on three methods in detail below: <a class="reference internal" href="#scp-section"><span class="std std-ref">scp</span></a>, <a class="reference internal" href="#rsync-section"><span class="std std-ref">rsync</span></a>, and <a class="reference internal" href="#globus-section"><span class="std std-ref">globus</span></a>.</p>
+<p>Your choice of method will primarily depend on the size and complexity of the data transfer. Of the three methods we cover below, <a class="reference internal" href="#scp-section"><span class="std std-ref">scp</span></a> is the simplest and most straight-forward tool. It may be the best choice for transferring a few small files. <a class="reference internal" href="#rsync-section"><span class="std std-ref">rsync</span></a> has improved efficiency and additional functionality, including the advantage of preserving progress if a transfer is interrupted. <a class="reference internal" href="#globus-section"><span class="std std-ref">Globus</span></a> should be used for large-scale data transfers.</p>
+<section id="scp">
+<span id="scp-section"></span><h2><span class="section-number">4.2.1. </span>scp<a class="headerlink" href="#scp" title="Link to this heading">#</a></h2>
+<p>Scp, which stands for secure copy, is a straight-forward method for copying a few small files. <code class="docutils literal notranslate"><span class="pre">scp</span></code> is a command line tool, which you can use by first specifying the ‘from’ location and then the ‘to’ destination.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span><span class="o">[</span>file<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>location<span class="w"> </span>of<span class="w"> </span>file<span class="o">]</span><span class="w"> </span><span class="o">[</span>file<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>destination<span class="w"> </span>of<span class="w"> </span>file<span class="o">]</span>
+</pre></div>
+</div>
+<p>If the file is on the cluster, you will need to put your user name and server information before that file path (see Example 1).</p>
+<p>You can copy an entire directory of files by using the -r flag (which stands for recursive):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span><span class="o">[</span>file<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>location<span class="w"> </span>of<span class="w"> </span>directory<span class="o">]</span><span class="w"> </span><span class="o">[</span>file<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>destination<span class="w"> </span>of<span class="w"> </span>file<span class="o">]</span>
+</pre></div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Example 1: Copying a file from laptop to Kempner cluster</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Jane Smith wants to transfer a file called data.npy from her laptop’s Downloads folder to her home directory on the cluster. She can accomplish this with running the following command on her laptop.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>/Users/janesmith/Downloads/data.npy<span class="w"> </span>janesmith@login.rc.fas.harvard.edu:/n/home02/janesmith/projectdata/
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Example 2: Copying a directory of files from Kempner cluster to laptop</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Jane Smith wants to transfer an entire directory, called <code class="docutils literal notranslate"><span class="pre">results</span></code>, from scratch storage on the cluster to her laptop’s Documents folder. She can accomplish this with running the following command on her laptop.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span>janesmith@login.rc.fas.harvard.edu:/n/netscratch/janesmith_lab/Users/janesmith/results<span class="w"> </span>/Users/janesmith/Documents/
+</pre></div>
+</div>
+</div>
+</details><div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can use the shortcut ‘~’ to stand in for the path to the home directory.</p>
+<p>In the examples above, <code class="docutils literal notranslate"><span class="pre">/Users/janesmith/</span></code> is the home directory so Jane could have used <code class="docutils literal notranslate"><span class="pre">~/Downloads/data.npy</span></code> instead of <code class="docutils literal notranslate"><span class="pre">/Users/janesmith/Downloads/data.npy</span></code>.</p>
+</div>
+</section>
+<section id="rsync">
+<span id="rsync-section"></span><h2><span class="section-number">4.2.2. </span>rsync<a class="headerlink" href="#rsync" title="Link to this heading">#</a></h2>
+<p>Rsync is a versatile, customizable file-copying tool. When you use rsync to transfer files, it only sends differences between the source and destination files, rather than all of the files. This efficient delta-transfer algorithm reduces the amount of data sent over the network and ensures you do not have to start over if the file transfer is disrupted. It also means that rsync is particularly useful in keeping directories synced between two places, including between a local environment and the cluster.</p>
+<p>The command syntax is similar to scp:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span><span class="o">[</span>arguments<span class="o">]</span><span class="w"> </span><span class="o">[</span>file<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>location<span class="w"> </span>of<span class="w"> </span>file<span class="o">]</span><span class="w"> </span><span class="o">[</span>file<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>destination<span class="w"> </span>of<span class="w"> </span>file<span class="o">]</span>
+</pre></div>
+</div>
+<p>You can customize the rsync command by adding any of the arguments below directly after the rsync command:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Rsync Argument</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-z</span></code></p></td>
+<td><p>Compresses the data as it is being sent. This uses CPUs on both ends (to compress/decompress) but is usually faster.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-a</span></code></p></td>
+<td><p>Archive mode. This ensures rsync preserves information such as time stamps and permissions, and copies directories recursively (meaning that the content of directories inside of the original source directory is also copied). None of these are default rsync behaviors.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-v</span></code></p></td>
+<td><p>Verbose mode. Gives more information during transfer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--progress</span></code></p></td>
+<td><p>Shows a progress meter for each file being transferred.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--dry-run</span></code></p></td>
+<td><p>Performs a dry run, i.e. displays information but does not actually copy files. Use with -v to check that the command will transfer the intended files before actually doing it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--exclude</span> <span class="pre">PATTERN</span></code></p></td>
+<td><p>Excludes files from transfer that match the PATTERN.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Unlike most similar commands, a trailing / on a directory name is meaningful for rsync. It changes the behavior from transferring the whole directory to transferring the contents of the directory. See example 2.</p>
+</div>
+<p>Check out the <a class="reference external" href="https://download.samba.org/pub/rsync/rsync.1">rsync documentation</a> for further information and additional argument options.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Example 1: Copying a file from laptop to Kempner cluster</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Jane Smith wants to transfer a file called data.npy from her laptop’s Downloads folder to her home directory on the cluster. She can accomplish this with running the following command on her laptop. She will use the archive mode argument (-a) and the verbose mode argument (-v):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-av<span class="w"> </span>/Users/janesmith/Downloads/data.npy<span class="w"> </span>janesmith@login.rc.fas.harvard.edu:/n/home02/janesmith/projectdata/
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Example 2: Copying a directory of files from Kempner cluster to laptop</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Jane Smith wants to transfer an entire directory, called <code class="docutils literal notranslate"><span class="pre">results</span></code>, from scratch storage on the cluster to her laptop’s Documents folder. She can accomplish this with running the following command on her laptop. She will use the archive mode argument (-a) and the verbose mode argument (-v):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-av<span class="w"> </span>janesmith@login.rc.fas.harvard.edu:/n/netscratch/janesmith_lab/Users/janesmith/results<span class="w"> </span>/Users/janesmith/Documents/
+</pre></div>
+</div>
+<p class="sd-card-text">This creates a directory called results in the Documents folder, with all the files inside that were in the results directory on the cluster.</p>
+<p class="sd-card-text">Let’s say that Jane includes a trailing ‘/’ on the first file path:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-av<span class="w"> </span>janesmith@login.rc.fas.harvard.edu:/n/netscratch/janesmith_lab/Users/janesmith/results/<span class="w"> </span>/Users/janesmith/Documents/
+</pre></div>
+</div>
+<p class="sd-card-text">This behaves differently. Now, the files that were in the results directory on the cluster have been transferred directly to the Documents directory. There is not a ‘results’ directory on the local machine.</p>
+</div>
+</details></section>
+<section id="fpsync">
+<span id="fpsync-section"></span><h2><span class="section-number">4.2.3. </span>fpsync<a class="headerlink" href="#fpsync" title="Link to this heading">#</a></h2>
+<p>While <code class="docutils literal notranslate"><span class="pre">rsync</span></code> is appropriate for most synchronization needs, <code class="docutils literal notranslate"><span class="pre">fpsync</span></code> may be more suitable for synchronizing large directories. <code class="docutils literal notranslate"><span class="pre">fpsync</span></code> synchronizes directories in parallel by using <code class="docutils literal notranslate"><span class="pre">fpart</span></code> and <code class="docutils literal notranslate"><span class="pre">rsync</span></code> to launch several jobs simultaneously, and, like <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, the synchronization can be resumed if disrupted. <code class="docutils literal notranslate"><span class="pre">fpsync</span></code> can launch synchronization processes locally or remotely on one or more workers using ssh. Remote workers must be able to access both the source and destination directories. Unlike <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, only the source directory contents are synchronized, not the directory itself.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fpsync<span class="w"> </span><span class="o">[</span>arguments<span class="o">]</span><span class="w"> </span><span class="o">[</span>absolute<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span><span class="nb">source</span><span class="w"> </span>directory<span class="o">]</span><span class="w"> </span><span class="o">[</span>absolute<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>destination<span class="w"> </span>directory<span class="o">]</span>
+</pre></div>
+</div>
+<p>When passing in the path to the source and destination directories, the absolute path must be specified.
+You can customize the <code class="docutils literal notranslate"><span class="pre">fpsync</span></code> command by adding any of the arguments below directly after the <code class="docutils literal notranslate"><span class="pre">fpsync</span></code> command:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>fpsync Argument</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-n</span></code></p></td>
+<td><p>Set the number of concurrent synchronization processes. Default: 2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-f</span></code></p></td>
+<td><p>Limit the number of files assigned to each sync job. Default: 2000.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-s</span></code></p></td>
+<td><p>Limit the size (in bytes) assigned to each sync job. Default: 4GB</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-t</span></code></p></td>
+<td><p>Path to temporary directory where fpsync logs are stored. Default: /tmp/fpsync (you need to change this)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-o</span></code></p></td>
+<td><p>Arguments for rsync (if you do not want to use default options). See above for rsync arguments. Do not use –delete. Default: -av –numeric-ids</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-O</span></code></p></td>
+<td><p>Arguments for fpart. Default: -x .zfs -x .snapshot* -x .ckpt</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In most cases on the FAS RC cluster, your <code class="docutils literal notranslate"><span class="pre">fpsync</span></code> command might look like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fpsync<span class="w"> </span>-n<span class="w"> </span><span class="o">[</span>NUMBER<span class="w"> </span>OF<span class="w"> </span>CONCURRENT<span class="w"> </span>JOBS<span class="o">]</span><span class="w"> </span>-t<span class="w"> </span>/temp/directory<span class="w"> </span>/source/directory<span class="w"> </span>/destination/directory
+</pre></div>
+</div>
+<p>As noted above, <code class="docutils literal notranslate"><span class="pre">fpsync</span></code> logs are found in /tmp by default. When running on the FAS RC cluster, you must specify a temp directory that you can access.</p>
+<p>You can also submit a job to run <code class="docutils literal notranslate"><span class="pre">fpsync</span></code> and set the number of concurrent jobs to the number of cpus requested:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>-c<span class="w"> </span><span class="nv">$SLURM_CPUS_PER_TASK</span><span class="w"> </span>fpsync<span class="w"> </span>-n<span class="w"> </span><span class="nv">$SLURM_CPUS_PER_TASK</span><span class="w"> </span>-t<span class="w"> </span>/temp/directory<span class="w"> </span>/source/directory<span class="w"> </span>/destination/directory
+</pre></div>
+</div>
+<p>Refer to the <a class="reference external" href="https://manpages.ubuntu.com/manpages/bionic/man1/fpsync.1.html">fpsync documentation</a> for further information and additional argument options.</p>
+</section>
+<section id="globus">
+<span id="globus-section"></span><h2><span class="section-number">4.2.4. </span>Globus<a class="headerlink" href="#globus" title="Link to this heading">#</a></h2>
+<p>Globus is a file sharing service designed for the secure and efficient transfer of large datasets. Unlike the methods above, you can transfer data through a user-friendly web interface. While we cover transfer between the cluster and a local machine below, Globus can also be useful for <a class="reference external" href="https://docs.globus.org/guides/tutorials/manage-files/share-files/">sharing data with external collaborators</a> even if they do not have access to the FAS RC cluster.</p>
+<section id="set-up">
+<h3><span class="section-number">4.2.4.1. </span>Set-up<a class="headerlink" href="#set-up" title="Link to this heading">#</a></h3>
+<p><strong>Set up general globus account</strong></p>
+<ol class="arabic simple">
+<li><p>Click on “Log in” on the <a class="reference external" href="https://www.globus.org/">Globus website</a></p></li>
+<li><p>Select Harvard University as your organization and log in using Harvard Key.</p></li>
+</ol>
+<p><strong>Set up Kempner cluster as an endpoint</strong></p>
+<ol class="arabic simple">
+<li><p>After logging in, you should be on the File Manager page. In the “Collection” field, search for “Harvard FAS RC Holyoke”.</p></li>
+<li><p>Select “Harvard FAS RC Holyoke” in the search results. It will ask you to authenticate your FASRC account, using your username and verfication code (code from your 2-factor authentication, not your password)</p></li>
+<li><p>You should now be able to see files and folders on the Kempner cluster. You will have the same permissions as if you were accessing the cluster via traditional log in. You can type a path into the “Path” field to go directly to a particular directory.</p></li>
+</ol>
+<p><strong>Set up your local machine as an endpoint</strong></p>
+<ol class="arabic simple">
+<li><p>Download and install <a class="reference external" href="https://www.globus.org/globus-connect-personal">Globus Connect Personal</a> for your operating machine</p></li>
+<li><p>Open Globus Connect Personal (on a mac, find it in the Applications folder). Log in, consent to the terms, and enter the details for your Globus Connect Personal Collection.</p></li>
+<li><p>If you run into any problems, Globus has tutorials on installation for each platform <a class="reference external" href="https://docs.globus.org/globus-connect-personal/install/">here</a>.</p></li>
+<li><p>If you navigate back to the <a class="reference external" href="https://www.globus.org">Globus File Manager</a>, you should now be able to search for your personal collection in the Collection field.</p></li>
+</ol>
+</section>
+<section id="data-transfer-example">
+<h3><span class="section-number">4.2.4.2. </span>Data Transfer Example<a class="headerlink" href="#data-transfer-example" title="Link to this heading">#</a></h3>
+<p>In this example, we will transfer an entire directory called results on the cluster to the Documents folder on Ella Batty’s local machine.</p>
+<ol class="arabic simple">
+<li><p>First, set up the collection you are transferring data from and navigate to the correct directory. In this case, the collection is Harvard FAS RC Holyoke and the path to the results directory is <code class="docutils literal notranslate"><span class="pre">/n/netscratch/sham_lab/Users/ebatty</span></code>.</p></li>
+</ol>
+<figure class="align-default" id="globus-data-transfer-1">
+<a class="reference internal image-reference" href="../../_images/globus_data_transfer_1.png"><img alt="../../_images/globus_data_transfer_1.png" src="../../_images/globus_data_transfer_1.png" style="height: 500px;" /></a>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Select the directories or files you would like to transfer and click “Transfer or Sync to…”</p></li>
+</ol>
+<figure class="align-default" id="globus-data-transfer-2">
+<a class="reference internal image-reference" href="../../_images/globus_data_transfer_2.png"><img alt="../../_images/globus_data_transfer_2.png" src="../../_images/globus_data_transfer_2.png" style="height: 500px;" /></a>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p>On the right hand side, connect to the collection where you would like to transfer data to. In this case, it is “Ella Batty Work Laptop” (a Globus Connect Personal collection). Navigate to and click the destination directory for your transfer.</p></li>
+</ol>
+<figure class="align-default" id="globus-data-transfer-3">
+<a class="reference internal image-reference" href="../../_images/globus_data_transfer_3.png"><img alt="../../_images/globus_data_transfer_3.png" src="../../_images/globus_data_transfer_3.png" style="height: 500px;" /></a>
+</figure>
+<ol class="arabic simple" start="4">
+<li><p>Click the “Start” button below the collection containing the source data. You should see a green notification pop up when the transfer request is successfully completed.  You can also navigate to the Activity tab on the left-hand panel to see details about the transfer.</p></li>
+</ol>
+<figure class="align-default" id="globus-data-transfer-4">
+<a class="reference internal image-reference" href="../../_images/globus_data_transfer_4.png"><img alt="../../_images/globus_data_transfer_4.png" src="../../_images/globus_data_transfer_4.png" style="height: 500px;" /></a>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that which “Start” button you press matters. In this scenario, pressing the “Start” button on the right hand side would have resulted in the entire Documents directory from the laptop being transferred to the cluster!</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./s1_high_performance_computing/storage_and_data_transfer"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="understanding_storage_options.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.1. </span>Storage Options</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="shared_data_repository.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Shared Data/Model Repository</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scp">4.2.1. scp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rsync">4.2.2. rsync</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fpsync">4.2.3. fpsync</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#globus">4.2.4. Globus</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">4.2.4.1. Set-up</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer-example">4.2.4.2. Data Transfer Example</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kempner Institute
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright  2024, The President and Fellows of Harvard College.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

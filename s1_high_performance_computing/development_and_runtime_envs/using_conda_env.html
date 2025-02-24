@@ -1,0 +1,803 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.4. Conda Environment &#8212; Kempner Institute Computing Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=54655037" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-QFZEXWFW26"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-QFZEXWFW26');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-QFZEXWFW26');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 's1_high_performance_computing/development_and_runtime_envs/using_conda_env';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.5. Spack Package Manager" href="handling_dependencies_with_spack.html" />
+    <link rel="prev" title="3.3. VSCode for Remote Dev" href="using_vscode_for_remote_development.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Kempner-logo_Full-Color-Full-Name-Harvard.svg" class="logo__image only-light" alt="Kempner Institute Computing Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/Kempner-logo_Full-Color-Full-Name-Harvard.svg" class="logo__image only-dark" alt="Kempner Institute Computing Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Kempner Computing Handbook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Performance Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../kempner_cluster/README.html">1. Kempner AI Cluster</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../kempner_cluster/introduction_and_cluster_basics.html">1.1. Introduction and Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kempner_cluster/overview_of_kempner_cluster.html">1.2. Overview of Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kempner_cluster/kempner_policies_for_responsible_use.html">1.3. Cluster Usage Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kempner_cluster/accessing_and_navigating_the_cluster.html">1.4. Accessing the Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kempner_cluster/accessing_gpu_by_fasrc_users.html">1.5. Access by FASRC Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../efficient_use_of_resources/fair_use_and_prioritization_policies.html">1.6. Fairshare Policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../general_hpc_concepts/README.html">2. Job Submission</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general_hpc_concepts/understanding_slurm.html">2.1. Understanding SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general_hpc_concepts/job_submission_basics.html">2.2. Job Submission Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general_hpc_concepts/array_jobs.html">2.3. Array Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general_hpc_concepts/job_dependencies.html">2.4. Job Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general_hpc_concepts/advanced_slurm_features.html">2.5. Advanced SLURM Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general_hpc_concepts/open_ondemand.html">2.6. Open OnDemand</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">3. Development Environment</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="software_module_and_environment_management.html">3.1. Software Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="containerization.html">3.2. Containerization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_vscode_for_remote_development.html">3.3. VSCode for Remote Dev</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.4. Conda Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handling_dependencies_with_spack.html">3.5. Spack Package Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing_bashrc.html">3.6. Shell Configuration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../storage_and_data_transfer/README.html">4. Storage and Data Transfer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../storage_and_data_transfer/understanding_storage_options.html">4.1. Storage Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../storage_and_data_transfer/data_transfer.html">4.2. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../storage_and_data_transfer/shared_data_repository.html">4.3. Shared Data/Model Repository</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Engineering for Research</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../s2_swe_for_research/collaborative_code_development.html">5. Collaborative Code Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../s2_swe_for_research/software_design_principles.html">6. Software Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../s2_swe_for_research/documentation_and_readibility.html">7. Documentation and Readability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../s2_swe_for_research/testing_and_continuous_integration.html">8. Testing and Continues Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../s2_swe_for_research/package_development.html">9. Package Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../s2_swe_for_research/reproducible_research.html">10. Reproducible Research</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AI Tools and Workflows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../s3_ai_workflows/testbed_and_tatm.html">11. Data Discovery and Tokenization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuro AI Workflows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../s4_neuro_ai_workflows/README.html">12. Spike Sorting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AI Scaling and Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/scalability/README.html">13. Scalability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/scalability/introduction_to_parallel_computing.html">13.1. Intro to Parallel Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/scalability/gpu_computing.html">13.2. GPU Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/scalability/gpu_profiling.html">13.3. GPU Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/scalability/distributed_gpu_computing.html">13.4. Distributed GPU Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/scalability/parallel_io.html">13.5. Parallel I/O</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/efficiency/README.html">14. Efficiency</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/efficiency/ml_scaling_and_efficiency.html">14.1. ML Efficiency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/efficiency/performance_monitoring_and_optimization.html">14.2. Peformance Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/efficiency/efficient_deployment_and_inference.html">14.3. Deployment and Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../s5_ai_scaling_and_engineering/efficiency/experiment_management_and_reproducibility.html">14.4. Experiment Management</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Security and Compliance</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../s6_security_and_compliance/README.html">15. Security and Compliance</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Open Source Hub</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../s7_open_source_hub/README.html">16. Open Source Hub</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../s8_support/README.html">17. Support and Troubleshooting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../s8_support/faq.html">17.1. FAQ</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshops and Trainings</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../s9_workshops_and_trainings/README.html">Sessions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../s9_workshops_and_trainings/spring2403_intro_to_hpc/content_file.html">Spring 24, March</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/KempnerInstitute/kempner-computing-handbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/KempnerInstitute/kempner-computing-handbook/issues/new?title=Issue%20on%20page%20%2Fs1_high_performance_computing/development_and_runtime_envs/using_conda_env.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/s1_high_performance_computing/development_and_runtime_envs/using_conda_env.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Conda Environment</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-conda-environment-under-the-default-home-directory">3.4.1. Building a Conda environment under the default home directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-conda-environment-and-why-should-you-use-it">3.4.1.1. What is a conda environment and why should you use it?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-conda-environment">3.4.1.2. Creating a Conda Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-conda-environment-with-jupyter">3.4.1.3. Using a Conda Environment with Jupyter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-a-conda-environment">3.4.1.4. Exporting a Conda Environment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-conda-environment-in-a-user-defined-directory">3.4.2. Building a Conda environment in a user-defined directory</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="conda-environment">
+<span id="development-and-runtime-envs-using-conda-env"></span><h1><span class="section-number">3.4. </span>Conda Environment<a class="headerlink" href="#conda-environment" title="Link to this heading">#</a></h1>
+<p>In order to use a conda environment on the cluster, you will need to create a conda environment and then activate it on the compute node. FASRC uses <code class="docutils literal notranslate"><span class="pre">mamba</span></code> as a replacement for <code class="docutils literal notranslate"><span class="pre">conda</span></code> to manage conda environments. <code class="docutils literal notranslate"><span class="pre">mamba</span></code> is a drop-in replacement for <code class="docutils literal notranslate"><span class="pre">conda</span></code> that is generally much faster.</p>
+<section id="building-a-conda-environment-under-the-default-home-directory">
+<h2><span class="section-number">3.4.1. </span>Building a Conda environment under the default home directory<a class="headerlink" href="#building-a-conda-environment-under-the-default-home-directory" title="Link to this heading">#</a></h2>
+<section id="what-is-a-conda-environment-and-why-should-you-use-it">
+<h3><span class="section-number">3.4.1.1. </span>What is a conda environment and why should you use it?<a class="headerlink" href="#what-is-a-conda-environment-and-why-should-you-use-it" title="Link to this heading">#</a></h3>
+<p>A conda environment is a directory that contains a self-contained instance of Python along with a specific set of packages. For instance, you can create a conda environment called <code class="docutils literal notranslate"><span class="pre">myenv</span></code> with numpy version 1.26.4 installed. When executing Python code within that environment, numpy version 1.26.4 will be used. If you need to run code from a different project requiring an older version of numpy, you can use a different conda environment with that older version of numpy installed.</p>
+<p>Overall, conda environments allow you to isolate package versions for different projects or repositories, which reduces conflicts and dependency issues. The use of conda environments also ensures reproducibility; you can export your conda environment, allowing others to run your code in precisely the same environment.</p>
+</section>
+<section id="creating-a-conda-environment">
+<span id="development-and-runtime-envs-using-conda-env-creation"></span><h3><span class="section-number">3.4.1.2. </span>Creating a Conda Environment<a class="headerlink" href="#creating-a-conda-environment" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Step 1: See a list of load modules using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code> command.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Verifying the loaded modules is a good practice to avoid conflicts between the loaded modules and any upcoming modules.</p>
+</div>
+</li>
+<li><p>Step 2: Purge the loaded modules using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> command if you have any loaded modules and you want to start fresh.</p></li>
+<li><p>Step 3: Load <code class="docutils literal notranslate"><span class="pre">python</span></code> module using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">python</span></code> command. This will load the default version of Python.</p></li>
+<li><p>Step 5: Create a conda environment using the <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">create</span></code> command. For example, to create a conda environment named <code class="docutils literal notranslate"><span class="pre">myenv</span></code> with Python 3.12 and installing pip and numpy, you can use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>myenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12<span class="w"> </span>pip<span class="w"> </span>numpy
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also create the environment from a <code class="docutils literal notranslate"><span class="pre">yaml</span></code> file. Please see the <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file">conda</a>’s official documentation for more information.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can also add a channel to the command if needed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>myenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12<span class="w"> </span>pip<span class="w"> </span>numpy<span class="w"> </span>-c<span class="w"> </span>conda-forge
+</pre></div>
+</div>
+<p>You can also specify the list and order of channels to look for the software pacakges.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>conda-forge
+conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>bioconda
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>Step 6: Check the location of the conda environment using the <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">info</span> <span class="pre">--envs</span></code> command. This will show the list of conda environments and their locations.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mamba<span class="w"> </span>info<span class="w"> </span>--envs
+
+<span class="w">        </span>mamba<span class="w"> </span>version<span class="w"> </span>:<span class="w"> </span><span class="m">1</span>.5.5
+<span class="c1"># conda environments:</span>
+<span class="c1">#</span>
+myenv<span class="w">                    </span>/n/home10/&lt;username&gt;/.conda/envs/myenv
+base<span class="w">                     </span>/n/sw/Mambaforge-23.11.0-0
+</pre></div>
+</div>
+</li>
+<li><p>Step 7: Activate the conda environment using the <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">activate</span></code> command. For example, to activate the <code class="docutils literal notranslate"><span class="pre">myenv</span></code> environment, you can use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>activate<span class="w"> </span>myenv
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be aware that the size of the new conda environment can occupy several gigabytes, depending on the number of packages being installed. To conserve disk space, it is advisable to delete any outdated environments. Read more <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#removing-an-environment">here</a>.</p>
+</div>
+</section>
+<section id="using-a-conda-environment-with-jupyter">
+<span id="development-and-runtime-envs-using-conda-env-jupyter"></span><h3><span class="section-number">3.4.1.3. </span>Using a Conda Environment with Jupyter<a class="headerlink" href="#using-a-conda-environment-with-jupyter" title="Link to this heading">#</a></h3>
+<p>If you plan to use Jupyter notebooks or JupyterLab on the cluster, and would like to use a conda environment, you need to install <code class="docutils literal notranslate"><span class="pre">ipykernel</span></code> within that conda environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>activate<span class="w"> </span>myenv
+pip<span class="w"> </span>install<span class="w"> </span>ipykernel
+</pre></div>
+</div>
+<p>You should now be able to change the kernel of the notebook to your conda environment.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For details on how select a kernel when running a jupyter notebook in VSCode,  please see the section <a class="reference internal" href="using_vscode_for_remote_development.html#development-and-runtime-envs-using-vscode-for-remote-development-jupyter"><span class="std std-ref">Using Jupyter notebooks within VSCode</span></a>.</p>
+</div>
+</section>
+<section id="exporting-a-conda-environment">
+<h3><span class="section-number">3.4.1.4. </span>Exporting a Conda Environment<a class="headerlink" href="#exporting-a-conda-environment" title="Link to this heading">#</a></h3>
+<p>You can export your conda environment into a <code class="docutils literal notranslate"><span class="pre">yml</span></code> file. This means that other users can recreate your exact conda environment using the <code class="docutils literal notranslate"><span class="pre">yml</span></code> file.</p>
+<p>To export your conda environment, run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>activate<span class="w"> </span>&lt;environment<span class="w"> </span>name&gt;
+mamba<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>environment.yml
+</pre></div>
+</div>
+<p>With this command, the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file will contain information about every single package in your environment, including low-level ones you did not explicitly install. Since some of these may be operating system-specific, this could mean that the conda environment is not reproducible across operating systems (Mac OS, Windows, Linux).</p>
+<p>To help ensure your environment is reproducible across operating systems, you can instead run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>activate<span class="w"> </span>&lt;environment<span class="w"> </span>name&gt;
+mamba<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>--from-history<span class="w"> </span>&gt;<span class="w"> </span>environment.yml
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--from-history</span></code> argument ensures that only packages you specifically chose to install are exported. Note however, that if you did not specify the versions of packages when installing them, the versions will not be included in the <code class="docutils literal notranslate"><span class="pre">yml</span></code> file when using the <code class="docutils literal notranslate"><span class="pre">from-history</span></code> flag.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--from-history</span></code> flag will also result in a <code class="docutils literal notranslate"><span class="pre">yml</span></code> file that does not include information on packages you installed with pip. To include packages you installed using pip, you can run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>Then manually add the following lines to your <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>-<span class="w"> </span>pip
+<span class="w"> </span>-<span class="w"> </span>pip:
+<span class="w">   </span>-<span class="w"> </span>-r<span class="w"> </span>file:requirements.txt
+</pre></div>
+</div>
+<p>A user can recreate your conda this <code class="docutils literal notranslate"><span class="pre">yml</span></code> file can recreate your conda environment by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>--file<span class="w"> </span>environment.yml
+</pre></div>
+</div>
+<p>They will need both the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file and the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Conda documentation</a> may be useful for further information.</p>
+</div>
+</section>
+</section>
+<section id="building-a-conda-environment-in-a-user-defined-directory">
+<h2><span class="section-number">3.4.2. </span>Building a Conda environment in a user-defined directory<a class="headerlink" href="#building-a-conda-environment-in-a-user-defined-directory" title="Link to this heading">#</a></h2>
+<p>The Conda environment and cache directory for installed packages can easily exceed tens of gigabytes. It is recommended to create the Conda environment in the lab directory instead of the home directory. In this section, we assume you prefer not to have a Conda environment in the default home directory, and that your default Conda environment is located in the lab directory. The lab directory (under your username) does not have the 100 GB space limitation, providing you with more room to create Conda environments.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>Please note that this is a major change to the default behavior of Conda. If you are unsure about this change, please consult with the FAS Research Computing.</p></li>
+<li><p>Also be aware that creating numerous Conda environments can exhaust the file system’s inodes, as Conda generates a large number of files. To avoid this, use the <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> space for your Conda environments. You can learn more about the Scratch space policy on the <a class="reference external" href="https://docs.rc.fas.harvard.edu/kb/policy-scratch/">FASRC website</a>.</p></li>
+</ul>
+</div>
+<p>Here are the steps to create a Conda environment in the lab directory:</p>
+<ul class="simple">
+<li><p>Step 1: Locate your lab directory</p></li>
+</ul>
+<p>The labs are located at the following path: <code class="docutils literal notranslate"><span class="pre">/n/holylabs/LABS</span></code> (or other filesystems such as <code class="docutils literal notranslate"><span class="pre">holylfs04</span></code>, <code class="docutils literal notranslate"><span class="pre">holylfs05</span></code>, <code class="docutils literal notranslate"><span class="pre">holylfs06</span></code>). Inside the LABS directory, you will find directories for individual labs. Within each lab directory, there is a <code class="docutils literal notranslate"><span class="pre">Users</span></code> folder. Inside this folder, there should be a folder with your username. If such a folder does not exist, request the FASRC help desk to create one for you. This folder will serve as your personal directory under your affiliated lab.</p>
+<ul>
+<li><p>Step 2: Create the following directories in your lab directory:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.conda</span></code>: This directory will be your default Conda directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.conda/envs</span></code>: This directory will store the conda environments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.conda/pkgs</span></code>: This directory will store the cached packages.</p></li>
+</ul>
+</li>
+<li><p>Step 3: Set the following environment variables in your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">CONDA_ENVS</span><span class="o">=</span>/n/holylabs/LABS/&lt;lab_name&gt;/&lt;username&gt;/.conda/envs
+<span class="nb">export</span><span class="w"> </span><span class="nv">CONDA_PKGS_DIRS</span><span class="o">=</span>/n/holylabs/LABS/&lt;lab_name&gt;/&lt;username&gt;/.conda/pkgs
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/n/holylabs/LABS/&lt;lab_name&gt;/&lt;username&gt;/.conda:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;lab_name&gt;</span></code> with the name of your lab and <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> with your username. The <code class="docutils literal notranslate"><span class="pre">CONDA_ENVS</span></code> environment variable specifies the directory where the Conda environments will be stored, and the <code class="docutils literal notranslate"><span class="pre">CONDA_PKGS_DIRS</span></code> environment variable specifies the directory where the cached packages will be stored.</p>
+<p>Run the following command to apply the changes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+</li>
+<li><p>Step 4: Add these default directories to your <code class="docutils literal notranslate"><span class="pre">.condarc</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>envs_dirs:
+-<span class="w"> </span>/n/holylabs/LABS/&lt;lab_name&gt;/&lt;username&gt;/.conda/envs
+
+pkgs_dirs:
+-<span class="w"> </span>/n/holylabs/LABS/&lt;lab_name&gt;/&lt;username&gt;/.conda/pkgs
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;lab_name&gt;</span></code> with the name of your lab and <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> with your username.</p>
+</li>
+<li><p>Step 5: Create a Conda environment in the lab directory using the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span></code> command. For example, to create a Conda environment named <code class="docutils literal notranslate"><span class="pre">myenv</span></code> with Python 3.12 and installing pip and numpy, you can use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>python/3.10.12-fasrc01
+conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>myenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12<span class="w"> </span>pip<span class="w"> </span>numpy
+</pre></div>
+</div>
+</li>
+<li><p>Step 6: Check if the Conda environment is created successfully in the lab directory using the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>list
+</pre></div>
+</div>
+<p>This command will list all the Conda environments, including the one you just created.</p>
+</li>
+<li><p>Done! You have successfully created a Conda environment in the lab directory.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./s1_high_performance_computing/development_and_runtime_envs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="using_vscode_for_remote_development.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3.3. </span>VSCode for Remote Dev</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="handling_dependencies_with_spack.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.5. </span>Spack Package Manager</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-conda-environment-under-the-default-home-directory">3.4.1. Building a Conda environment under the default home directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-conda-environment-and-why-should-you-use-it">3.4.1.1. What is a conda environment and why should you use it?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-conda-environment">3.4.1.2. Creating a Conda Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-conda-environment-with-jupyter">3.4.1.3. Using a Conda Environment with Jupyter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-a-conda-environment">3.4.1.4. Exporting a Conda Environment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-conda-environment-in-a-user-defined-directory">3.4.2. Building a Conda environment in a user-defined directory</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kempner Institute
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright  2024, The President and Fellows of Harvard College.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -14,34 +14,31 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=76190965" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=54655037" />
   
-  <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -80,7 +77,6 @@
     <link rel="search" title="Search" href="#" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -96,8 +92,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="#"
       method="get">
@@ -105,6 +112,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -112,8 +120,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -131,8 +139,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -162,96 +169,121 @@
     
     
     <img src="_static/Kempner-logo_Full-Color-Full-Name-Harvard.svg" class="logo__image only-light" alt="Kempner Institute Computing Handbook - Home"/>
-    <img src="_static/Kempner-logo_Full-Color-Full-Name-Harvard.svg" class="logo__image only-dark pst-js-only" alt="Kempner Institute Computing Handbook - Home"/>
+    <script>document.write(`<img src="_static/Kempner-logo_Full-Color-Full-Name-Harvard.svg" class="logo__image only-dark" alt="Kempner Institute Computing Handbook - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Kempner Institute Computing Handbook
+                    Kempner Computing Handbook
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="getting_started/README.html">1. Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="getting_started/introduction_and_cluster_basics.html">1.1. Introduction and Cluster Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started/overview_of_kempner_cluster.html">1.2. Overview of Kempner Institute HPC Cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started/kempner_policies_for_responsible_use.html">1.3. Kempner Policies for Responsible Use of the Cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started/accessing_and_navigating_the_cluster.html">1.4. Accessing and Navigating the Cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started/accessing_gpu_by_fasrc_users.html">1.5. Accessing Kempner GPUs by All FASRC Users</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Performance Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="s1_high_performance_computing/kempner_cluster/README.html">1. Kempner AI Cluster</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/kempner_cluster/introduction_and_cluster_basics.html">1.1. Introduction and Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/kempner_cluster/overview_of_kempner_cluster.html">1.2. Overview of Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/kempner_cluster/kempner_policies_for_responsible_use.html">1.3. Cluster Usage Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/kempner_cluster/accessing_and_navigating_the_cluster.html">1.4. Accessing the Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/kempner_cluster/accessing_gpu_by_fasrc_users.html">1.5. Access by FASRC Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/efficient_use_of_resources/fair_use_and_prioritization_policies.html">1.6. Fairshare Policy</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="resource_management/README.html">2. Resource Management</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="resource_management/understanding_slurm.html">2.1. Understanding SLURM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resource_management/job_submission_basics.html">2.2. Job Submission Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resource_management/open_ondemand.html">2.3. Open OnDemand</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resource_management/array_jobs.html">2.4. Array Jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resource_management/job_dependencies.html">2.5. Job Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resource_management/advanced_slurm_features.html">2.6. Advanced SLURM Features</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="s1_high_performance_computing/general_hpc_concepts/README.html">2. Job Submission</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/general_hpc_concepts/understanding_slurm.html">2.1. Understanding SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/general_hpc_concepts/job_submission_basics.html">2.2. Job Submission Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/general_hpc_concepts/array_jobs.html">2.3. Array Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/general_hpc_concepts/job_dependencies.html">2.4. Job Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/general_hpc_concepts/advanced_slurm_features.html">2.5. Advanced SLURM Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/general_hpc_concepts/open_ondemand.html">2.6. Open OnDemand</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="development_and_runtime_envs/README.html">3. Dev and Runtime Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="development_and_runtime_envs/software_module_and_environment_management.html">3.1. Software Module and Environment Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development_and_runtime_envs/containerization.html">3.2. Containerization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development_and_runtime_envs/using_vscode_for_remote_development.html">3.3. Using VSCode for Remote Development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development_and_runtime_envs/using_conda_env.html">3.4. Using Conda Environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development_and_runtime_envs/handling_dependencies_with_spack.html">3.5. Handling Dependencies with Spack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development_and_runtime_envs/customizing_bashrc.html">3.6. Customizing Shell Configuration File</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="s1_high_performance_computing/development_and_runtime_envs/README.html">3. Development Environment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/development_and_runtime_envs/software_module_and_environment_management.html">3.1. Software Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/development_and_runtime_envs/containerization.html">3.2. Containerization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/development_and_runtime_envs/using_vscode_for_remote_development.html">3.3. VSCode for Remote Dev</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/development_and_runtime_envs/using_conda_env.html">3.4. Conda Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/development_and_runtime_envs/handling_dependencies_with_spack.html">3.5. Spack Package Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/development_and_runtime_envs/customizing_bashrc.html">3.6. Shell Configuration</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="scalability/README.html">4. Scalability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scalability/introduction_to_parallel_computing.html">4.1. Intro to Parallel Computing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scalability/gpu_computing.html">4.2. GPU Computing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scalability/gpu_profiling.html">4.3. GPU Profiling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scalability/distributed_gpu_computing.html">4.4. Distributed GPU Computing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scalability/parallel_io.html">4.5. Parallel I/O</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="s1_high_performance_computing/storage_and_data_transfer/README.html">4. Storage and Data Transfer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/storage_and_data_transfer/understanding_storage_options.html">4.1. Storage Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/storage_and_data_transfer/data_transfer.html">4.2. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s1_high_performance_computing/storage_and_data_transfer/shared_data_repository.html">4.3. Shared Data/Model Repository</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="storage_and_data_transfer/README.html">5. Storage and Data Transfer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="storage_and_data_transfer/understanding_storage_options.html">5.1. Understanding Storage Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="storage_and_data_transfer/data_transfer.html">5.2. Data Transfer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="storage_and_data_transfer/testbed_and_tatm.html">5.3. The Kempner Testbed and TATM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="storage_and_data_transfer/shared_data_repository.html">5.4. Shared Data Repository</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Engineering for Research</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="s2_swe_for_research/collaborative_code_development.html">5. Collaborative Code Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="s2_swe_for_research/software_design_principles.html">6. Software Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="s2_swe_for_research/documentation_and_readibility.html">7. Documentation and Readability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="s2_swe_for_research/testing_and_continuous_integration.html">8. Testing and Continues Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="s2_swe_for_research/package_development.html">9. Package Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="s2_swe_for_research/reproducible_research.html">10. Reproducible Research</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AI Tools and Workflows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="s3_ai_workflows/testbed_and_tatm.html">11. Data Discovery and Tokenization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuro AI Workflows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="s4_neuro_ai_workflows/README.html">12. Spike Sorting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AI Scaling and Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="s5_ai_scaling_and_engineering/scalability/README.html">13. Scalability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="s5_ai_scaling_and_engineering/scalability/introduction_to_parallel_computing.html">13.1. Intro to Parallel Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s5_ai_scaling_and_engineering/scalability/gpu_computing.html">13.2. GPU Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s5_ai_scaling_and_engineering/scalability/gpu_profiling.html">13.3. GPU Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s5_ai_scaling_and_engineering/scalability/distributed_gpu_computing.html">13.4. Distributed GPU Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s5_ai_scaling_and_engineering/scalability/parallel_io.html">13.5. Parallel I/O</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="performance_monitoring/README.html">6. Performance Monitoring</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="performance_monitoring/intro_to_performance_monitoring.html">6.1. Introduction to Performance Monitoring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance_monitoring/monitoring_tools.html">6.2. Monitoring Tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance_monitoring/performance_analysis_techniques.html">6.3. Performance Analysis Techniques</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance_monitoring/benchmarking_your_application.html">6.4. Benchmarking Your Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance_monitoring/optimizing_io_performance.html">6.5. Optimizing I/O Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance_monitoring/parallel_performance_tuning.html">6.6. Parallel Performance Tuning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance_monitoring/advanced_monitoring_and_tuning_tools.html">6.7. Advanced Monitoring and Tuning Tools</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="s5_ai_scaling_and_engineering/efficiency/README.html">14. Efficiency</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="s5_ai_scaling_and_engineering/efficiency/ml_scaling_and_efficiency.html">14.1. ML Efficiency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s5_ai_scaling_and_engineering/efficiency/performance_monitoring_and_optimization.html">14.2. Peformance Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s5_ai_scaling_and_engineering/efficiency/efficient_deployment_and_inference.html">14.3. Deployment and Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s5_ai_scaling_and_engineering/efficiency/experiment_management_and_reproducibility.html">14.4. Experiment Management</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="advanced_topics/README.html">7. Advanced Topics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="advanced_topics/gpu_interconnect.html">7.1. GPU Architecture and Interconnect</a></li>
-<li class="toctree-l2"><a class="reference internal" href="advanced_topics/gpu_libraries_and_frameworks.html">7.2. GPU Libraries and Frameworks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Security and Compliance</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="s6_security_and_compliance/README.html">15. Security and Compliance</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Open Source Hub</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="s7_open_source_hub/README.html">16. Open Source Hub</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="s8_support/README.html">17. Support and Troubleshooting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="s8_support/faq.html">17.1. FAQ</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="efficient_use_of_resources/README.html">8. Efficient Use of Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="efficient_use_of_resources/best_practices_for_hpc_efficiency.html">8.1. Best Practices for HPC Efficiency</a></li>
-<li class="toctree-l2"><a class="reference internal" href="efficient_use_of_resources/fair_use_and_prioritization_policies.html">8.2. Fair Use and Prioritization Policies</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1"><a class="reference internal" href="hpc_application_scenarios/README.html">9. HPC Application Scenarios</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="workshops_and_trainings/README.html">10. Workshops and Trainings</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="workshops_and_trainings/intro_to_hpc/content_file.html">10.1. Intro to HPC</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="support/README.html">11. Support and Troubleshooting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="support/faq.html">11.1. FAQ</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshops and Trainings</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="s9_workshops_and_trainings/README.html">Sessions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="s9_workshops_and_trainings/spring2403_intro_to_hpc/content_file.html">Spring 24, March</a></li>
 </ul>
 </details></li>
 </ul>
@@ -262,14 +294,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -365,16 +392,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -400,6 +435,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -477,8 +513,8 @@ By Kempner Institute
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
