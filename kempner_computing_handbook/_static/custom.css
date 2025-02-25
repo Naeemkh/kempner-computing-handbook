@@ -12,11 +12,7 @@ h3 {
 
 
 
-/* Adjust the main content area to accommodate the sidebar width changes */
-.bd-main {
-    flex: 1;
-    max-width: calc(100% - 300px); /* Subtract the sidebar width from the total width */
-}
+
 
 .caption {
     background-color: #c6c8f438; /* Replace with your desired background color */
