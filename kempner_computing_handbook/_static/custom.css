@@ -10,17 +10,7 @@ h3 {
     font-size: 18px;
 }
 
-/* Adjust the width of the primary sidebar */
-.bd-sidebar-primary {
-    flex: 0 0 300px; /* Set the desired width */
-    max-width: 300px; /* Ensure the sidebar doesn't exceed this width */
-}
 
-/* Adjust the width of the secondary sidebar (if present) */
-.bd-sidebar-secondary {
-    flex: 0 0 300px; /* Set the desired width */
-    max-width: 300px; /* Ensure the sidebar doesn't exceed this width */
-}
 
 /* Adjust the main content area to accommodate the sidebar width changes */
 .bd-main {
