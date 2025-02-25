@@ -1,50 +1,14 @@
-/* Adjust heading sizes for small screens */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 20px;
-    }
-
-    h2 {
-        font-size: 18px; 
-    }
-
-    h3 {
-        font-size: 16px;
-    }
-
-    /* Make sidebars flexible on small screens */
-    .bd-sidebar-primary,
-    .bd-sidebar-secondary {
-        flex: 0 0 100%; /* Allow full width on small screens */
-        max-width: 100%; /* Prevent overflow issues */
-    }
-
-    /* Allow main content to take full width */
-    .bd-main {
-        max-width: 100%; 
-    }
-
-    /* Ensure captions are fully visible */
-    .caption {
-        display: block; /* Allows it to scale properly */
-        width: 100%; /* Ensures it doesn't overflow */
-    }
+h1 {
+    font-size: 24px;
 }
 
-/* Default styling for larger screens */
-@media (min-width: 769px) {
-    .bd-sidebar-primary,
-    .bd-sidebar-secondary {
-        flex: 0 0 300px;
-        max-width: 300px;
-    }
-
-    .bd-main {
-        flex: 1;
-        max-width: calc(100% - 300px);
-    }
+h2 {
+    font-size: 20px; 
 }
 
+h3 {
+    font-size: 18px;
+}
 
 
 .caption {
